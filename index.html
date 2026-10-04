@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="szkbxCMsYSmEPHLg8iN3TZdhRQ4XX8dtrh9dw0x5gs0" />
+    <title>Skill Aura - Empowering Educators with AI & ICT</title>
+    <meta name="description" content="Skill Aura is an educational training initiative empowering educators with AI tools, LLMs, and ICT digital pedagogy. Founded by Hrishikesh M.">
+    <link rel="canonical" href="https://skill-aura.in/">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#1f2937', 
+                            purple: '#8a2be2', // Matched to logo 'a' and 'r'
+                            accent: '#f3f4f6',
+                            pink: '#e81cff', // Matched to logo 'u' and 'a'
+                            blue: '#00f2fe',
+                            teal: '#00b4d8'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out 3s infinite',
+                        'drift': 'drift 20s infinite alternate ease-in-out',
+                        'pulse-glow': 'pulseGlow 3s infinite alternate',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        drift: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(20px, -30px) scale(1.05)' },
+                            '66%': { transform: 'translate(-15px, 15px) scale(0.95)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        pulseGlow: {
+                            '0%': { boxShadow: '0 0 15px rgba(232,28,255,0.3)' },
+                            '100%': { boxShadow: '0 0 35px rgba(0,242,254,0.6)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            /* Matched exactly to the provided logo background vibe */
+            background-color: #fdfbfb;
+            background-image: 
+                radial-gradient(at 0% 100%, rgba(248, 190, 255, 0.4) 0px, transparent 60%), /* Bottom left pink */
+                radial-gradient(at 100% 50%, rgba(186, 242, 255, 0.4) 0px, transparent 60%), /* Right cyan */
+                radial-gradient(at 50% 0%, rgba(255, 255, 255, 0.9) 0px, transparent 60%);   /* Top white */
+            background-attachment: fixed;
+            color: #1f2937; /* Dark gray for readability on light bg */
+            overflow-x: hidden;
+            cursor: none; /* Custom cursor */
+        }
+        
+        @media (pointer: coarse) {
+            body { cursor: auto; }
+        }
+
+        /* Light Theme Glassmorphism Utilities */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.85);
+            border-color: rgba(255, 255, 255, 1);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Text Gradients */
+        .text-gradient {
+            background: linear-gradient(to right, #8a2be2, #e81cff, #00b4d8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: textShine 5s linear infinite;
+        }
+        @keyframes textShine {
+            to { background-position: 200% center; }
+        }
+
+        /* Primary Button */
+        .btn-primary {
+            background: linear-gradient(90deg, #8a2be2 0%, #e81cff 50%, #00f2fe 100%);
+            background-size: 200% auto;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            color: white;
+            box-shadow: 0 8px 20px rgba(232, 28, 255, 0.3);
+        }
+        .btn-primary:hover {
+            background-position: right center;
+            box-shadow: 0 12px 25px rgba(0, 242, 254, 0.4);
+            transform: scale(1.05);
+        }
+        .btn-primary:active { transform: scale(0.95); }
+
+        /* Interactive Items */
+        .interactive-item {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .interactive-item:hover {
+            transform: translateY(-3px) scale(1.02);
+            border-color: rgba(138, 43, 226, 0.3);
+        }
+
+        /* Light Theme Background Animated Orbs */
+        .bg-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        /* Custom Cursor Elements - Adjusted for Light BG */
+        .cursor-dot, .cursor-outline {
+            position: fixed;
+            top: 0; left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+            transition: background-color 0.3s, border-color 0.3s, transform 0.1s;
+        }
+        .cursor-dot {
+            width: 8px; height: 8px;
+            background-color: #8a2be2;
+            box-shadow: 0 0 10px rgba(138,43,226, 0.5);
+        }
+        .cursor-outline {
+            width: 40px; height: 40px;
+            border: 2px solid rgba(232, 28, 255, 0.5);
+        }
+        .cursor-hover .cursor-outline {
+            transform: translate(-50%, -50%) scale(1.6);
+            background-color: rgba(0, 242, 254, 0.1);
+            border-color: #00f2fe;
+        }
+        .cursor-hover .cursor-dot {
+            background-color: #e81cff;
+            box-shadow: 0 0 15px rgba(232,28,255, 0.7);
+        }
+
+        /* Fade-in Animation */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, visibility;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* Nav links hover */
+        .nav-link {
+            position: relative;
+            color: #4b5563; /* text-gray-600 */
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0; height: 2px;
+            bottom: -4px; left: 0;
+            background: linear-gradient(90deg, #8a2be2, #e81cff);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover { color: #111827; } /* text-gray-900 */
+        .nav-link:hover::after { width: 100%; }
+        
+        /* Subtle pattern overlay */
+        .bg-pattern {
+            background-image: radial-gradient(rgba(138, 43, 226, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-purple selection:text-white relative font-sans">
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot hidden md:block"></div>
+    <div class="cursor-outline hidden md:block" id="cursor-outline"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 border-b border-gray-200/50 bg-white/40 backdrop-blur-md" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer interactive-item p-1" onclick="window.scrollTo(0,0)">
+                    <img class="h-16 w-auto object-contain rounded-xl p-1 bg-white/50 shadow-sm border border-white" src="https://i.ibb.co/xqxRn2c1/skill-aura-header.jpg" alt="Skill Aura Logo">
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="nav-link font-semibold transition-colors">About</a>
+                    <a href="#trainer" class="nav-link font-semibold transition-colors">Trainer</a>
+                    <a href="#programs" class="nav-link font-semibold transition-colors">Programs & LLMs</a>
+                    <a href="#gallery" class="nav-link font-semibold transition-colors">Gallery</a>
+                    <a href="#quiz" class="nav-link font-semibold transition-colors">AI Test</a>
+                    <a href="#contact" class="btn-primary px-7 py-2.5 rounded-full font-bold shadow-md interactable text-white">Contact Us</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-brand-purple focus:outline-none p-2 interactive-item bg-white/50 rounded-lg shadow-sm">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-card absolute w-full left-0 top-24 border-b border-gray-200 shadow-xl">
+            <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col items-center">
+                <a href="#about" class="mobile-link block px-3 py-2 text-base font-bold text-gray-700 hover:text-brand-purple">About</a>
+                <a href="#trainer" class="mobile-link block px-3 py-2 text-base font-bold text-gray-700 hover:text-brand-purple">Trainer</a>
+                <a href="#programs" class="mobile-link block px-3 py-2 text-base font-bold text-gray-700 hover:text-brand-purple">Programs & LLMs</a>
+                <a href="#gallery" class="mobile-link block px-3 py-2 text-base font-bold text-gray-700 hover:text-brand-purple">Gallery</a>
+                <a href="#quiz" class="mobile-link block px-3 py-2 text-base font-bold text-brand-purple">Take AI Test</a>
+                <a href="#contact" class="mobile-link block px-3 py-2 text-base font-bold text-white btn-primary rounded-lg w-full text-center mt-4">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden bg-pattern">
+        <!-- Floating abstract shapes -->
+        <div class="bg-orb w-[400px] h-[400px] bg-brand-purple/10 top-20 left-10 animate-drift"></div>
+        <div class="bg-orb w-[500px] h-[500px] bg-brand-blue/10 bottom-10 right-10 animate-drift" style="animation-delay: -5s;"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center fade-in-section">
+            <div class="relative mb-10 group interactive-item cursor-default w-full max-w-3xl flex justify-center animate-float" style="animation-duration: 8s;">
+                <div class="absolute -inset-4 bg-gradient-to-r from-brand-pink via-brand-purple to-brand-blue rounded-3xl blur-2xl opacity-20 group-hover:opacity-50 transition duration-1000"></div>
+                <img src="https://i.ibb.co/4nMpDjP4/Skill-aura-logo-web.jpg" alt="Skill Aura Official Logo" class="relative z-10 w-full max-w-lg md:max-w-2xl h-auto object-contain rounded-[2rem] p-4 md:p-8 bg-white/40 backdrop-blur-xl border-2 border-white/80 shadow-[0_20px_50px_rgba(138,43,226,0.15)] transform transition-transform duration-700 group-hover:scale-105">
+            </div>
+
+            <div class="interactive-item inline-block px-5 py-2 rounded-full border border-brand-purple/20 bg-white/60 backdrop-blur-md text-sm font-bold text-brand-purple mb-8 shadow-sm">
+                <i class="fas fa-robot mr-2 animate-bounce inline-block text-brand-pink"></i> Join 500+ Educators Empowered by AI
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-display font-black leading-tight mb-6 tracking-tight text-gray-900 drop-shadow-sm">
+                Teach Smarter with <br>
+                <span class="text-gradient">AI & Digital Pedagogy</span>
+            </h1>
+            
+            <p class="mt-4 text-lg md:text-2xl text-gray-600 max-w-3xl mx-auto font-medium leading-relaxed mb-10">
+                A forward-thinking educational training initiative dedicated to equipping educators with the knowledge, skills, and confidence to effectively integrate AI and ICT.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center w-full sm:w-auto mt-2">
+                <a href="#programs" class="btn-primary interactable px-8 py-4 rounded-full text-lg font-bold flex items-center justify-center gap-2 group text-white">
+                    Explore Programs <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                </a>
+                <a href="#quiz" class="interactive-item bg-white hover:bg-gray-50 border border-gray-200 px-8 py-4 rounded-full text-lg font-bold flex items-center justify-center gap-2 text-brand-purple shadow-md">
+                    <i class="fas fa-brain text-brand-pink"></i> AI Readiness Test
+                </a>
+            </div>
+            
+            <!-- Tech Stack/Icons (Expanded) -->
+            <div class="mt-24 w-full">
+                <p class="text-xs md:text-sm text-gray-500 mb-8 uppercase tracking-[0.2em] font-bold">Mastering the Tools of Tomorrow</p>
+                <div class="flex flex-wrap justify-center gap-4 md:gap-8 lg:gap-10">
+                    <div class="interactive-item flex flex-col items-center gap-2 p-3 glass-card rounded-2xl cursor-pointer">
+                        <svg class="w-8 h-8 md:w-10 md:h-10 text-emerald-500" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .516 7.027 5.985 5.985 0 0 0 .516 4.91 6.046 6.046 0 0 0 6.51 2.9 6.065 6.065 0 0 0 10.276-2.17 5.985 5.985 0 0 0 3.998-2.9 6.046 6.046 0 0 0-.516-7.027zm-2.73 6.137a4.484 4.484 0 0 1-1.393 1.546 4.545 4.545 0 0 1-5.111.45l-.234-.135v.27a4.57 4.57 0 0 1-6.19 4.3 4.484 4.484 0 0 1-2.316-2.28 4.545 4.545 0 0 1 .184-5.13l.18-.242h-.326a4.57 4.57 0 0 1-4.103-6.42 4.484 4.484 0 0 1 1.954-2.58 4.545 4.545 0 0 1 5.093.076l.235.15v-.286a4.57 4.57 0 0 1 6.19-4.3 4.484 4.484 0 0 1 2.316 2.28 4.545 4.545 0 0 1-.184 5.13l-.18.24h.326a4.57 4.57 0 0 1 4.103 6.42 4.484 4.484 0 0 1-1.954 2.58h-.001zM7.228 11.53v.453l4.337 2.51v3.916l3.39-1.956v-6.335L10.61 7.604 7.228 9.56v1.97zm1.13-3.666l3.39-1.956 3.392 1.956v3.913l-3.392 1.957-3.39-1.957V7.864zm8.413-1.68l-4.336 2.503v.454l4.336 2.51 3.39-1.956v-3.916l-3.39 1.957v-1.552zM19.16 11.53v-.453l-4.336-2.51V4.65l-3.39 1.956v6.335l4.336 2.514 3.39-1.956v-1.97zM18.03 15.2l-3.392 1.956-3.39-1.956V11.29l3.39-1.957 3.392 1.957V15.2zm-8.414 1.68l4.336-2.503v-.454l-4.336-2.51-3.39 1.956v3.916l3.39-1.957v1.552z"/></svg>
+                        <span class="font-bold text-gray-700 text-xs md:text-sm">ChatGPT</span>
+                    </div>
+                    <div class="interactive-item flex flex-col items-center gap-2 p-3 glass-card rounded-2xl cursor-pointer">
+                        <svg class="w-8 h-8 md:w-10 md:h-10" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <defs><linearGradient id="gemini-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4285f4"/><stop offset="50%" stop-color="#ea4335"/><stop offset="100%" stop-color="#fbbc04"/></linearGradient></defs>
+                            <path d="M12 0C12 6.627 17.373 12 24 12C17.373 12 12 17.373 12 24C12 17.373 6.627 12 0 12C6.627 12 12 6.627 12 0Z" fill="url(#gemini-grad)"/>
+                        </svg>
+                        <span class="font-bold text-gray-700 text-xs md:text-sm">Gemini</span>
+                    </div>
+                    <div class="interactive-item flex flex-col items-center gap-2 p-3 glass-card rounded-2xl cursor-pointer">
+                        <div class="w-8 h-8 md:w-10 md:h-10 rounded bg-[#d97757] flex items-center justify-center text-white font-serif italic font-bold text-xl md:text-2xl">C</div>
+                        <span class="font-bold text-gray-700 text-xs md:text-sm">Claude AI</span>
+                    </div>
+                    <div class="interactive-item flex flex-col items-center gap-2 p-3 glass-card rounded-2xl cursor-pointer">
+                        <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gradient-to-tr from-cyan-400 via-purple-500 to-blue-500 flex items-center justify-center text-white font-bold text-lg md:text-xl shadow-sm">Ca</div>
+                        <span class="font-bold text-gray-700 text-xs md:text-sm">Canva AI</span>
+                    </div>
+                    <div class="interactive-item flex flex-col items-center gap-2 p-3 glass-card rounded-2xl cursor-pointer ring-2 ring-brand-blue/30 bg-blue-50/50">
+                        <svg class="w-8 h-8 md:w-10 md:h-10 text-blue-600" fill="currentColor" viewBox="0 0 24 24"><path d="M4 4h16v16H4V4zm2 2v12h12V6H6zm2 2h8v2H8V8zm0 4h8v2H8v-2z"/></svg>
+                        <span class="font-bold text-gray-900 text-xs md:text-sm">Gemini Notebook</span>
+                    </div>
+                    <div class="interactive-item flex flex-col items-center gap-2 p-3 glass-card rounded-2xl cursor-pointer">
+                        <i class="fas fa-bolt text-3xl md:text-4xl text-black"></i>
+                        <span class="font-bold text-gray-700 text-xs md:text-sm">Grok AI</span>
+                    </div>
+                    <div class="interactive-item flex flex-col items-center gap-2 p-3 glass-card rounded-2xl cursor-pointer">
+                        <i class="fas fa-water text-3xl md:text-4xl text-blue-500"></i>
+                        <span class="font-bold text-gray-700 text-xs md:text-sm">DeepSeek</span>
+                    </div>
+                    <div class="interactive-item flex flex-col items-center gap-2 p-3 glass-card rounded-2xl cursor-pointer">
+                        <div class="w-8 h-8 md:w-10 md:h-10 flex flex-wrap gap-1 items-center justify-center p-1">
+                            <div class="w-3 h-3 bg-blue-500 rounded-full"></div><div class="w-3 h-3 bg-red-500 rounded-full"></div><div class="w-3 h-3 bg-yellow-500 rounded-full"></div><div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                        </div>
+                        <span class="font-bold text-gray-700 text-xs md:text-sm">Google Flow</span>
+                    </div>
+                    <div class="interactive-item flex flex-col items-center gap-2 p-3 glass-card rounded-2xl cursor-pointer">
+                        <i class="fas fa-film text-3xl md:text-4xl text-rose-500"></i>
+                        <span class="font-bold text-gray-700 text-xs md:text-sm">Kling AI</span>
+                    </div>
+                    <div class="interactive-item flex flex-col items-center gap-2 p-3 glass-card rounded-2xl cursor-pointer">
+                        <i class="fas fa-hat-wizard text-3xl md:text-4xl text-fuchsia-500"></i>
+                        <span class="font-bold text-gray-700 text-xs md:text-sm">Magic School</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-24 relative border-t border-gray-200/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center fade-in-section">
+                <div class="relative group order-2 lg:order-1">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-brand-pink to-brand-blue rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition duration-500"></div>
+                    <img src="https://i.ibb.co/4nPmkk7x/AI-Powered-Classroom-in-Action.png" alt="AI in Classroom" class="relative rounded-3xl w-full object-cover shadow-2xl border border-white interactive-item">
+                    
+                    <!-- Floating badge -->
+                    <div class="absolute -bottom-6 -right-6 md:-bottom-10 md:-right-10 glass-card p-5 md:p-6 rounded-2xl animate-float shadow-xl">
+                        <div class="flex items-center gap-4">
+                            <div class="h-14 w-14 rounded-full bg-gradient-to-br from-brand-purple to-brand-pink flex items-center justify-center text-white text-2xl shadow-lg">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <p class="text-3xl font-black text-gray-900 tracking-tight">500+</p>
+                                <p class="text-xs font-bold text-brand-purple uppercase tracking-wider">Educators Trained</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-1 lg:order-2">
+                    <h2 class="text-4xl md:text-5xl font-display font-black mb-6 leading-tight text-gray-900">Bridging the Gap in <br><span class="text-gradient">Modern Education</span></h2>
+                    <p class="text-gray-700 text-lg mb-6 leading-relaxed font-medium">
+                        Recognizing that AI and emerging technologies are rapidly transforming the educational landscape, <strong class="text-brand-purple">Skill Aura</strong> aims to bridge the gap between traditional teaching methods and modern digital practices.
+                    </p>
+                    <p class="text-gray-700 text-lg mb-8 leading-relaxed">
+                        Integrating AI and ICT into pedagogy is no longer optional—it's a necessity. We offer structured, hands-on training tailored for educators, enabling teachers to confidently use digital tools for lesson planning, content creation, and interactive engagement.
+                    </p>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-start interactive-item p-4 rounded-2xl glass-card cursor-default">
+                            <div class="h-10 w-10 rounded-full bg-brand-pink/10 flex items-center justify-center mr-4 flex-shrink-0 text-brand-pink border border-brand-pink/20">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <span class="text-gray-800 text-lg font-semibold pt-1">Integrate AI tools seamlessly into everyday teaching</span>
+                        </li>
+                        <li class="flex items-start interactive-item p-4 rounded-2xl glass-card cursor-default">
+                            <div class="h-10 w-10 rounded-full bg-brand-blue/10 flex items-center justify-center mr-4 flex-shrink-0 text-brand-blue border border-brand-blue/20">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <span class="text-gray-800 text-lg font-semibold pt-1">Design dynamic assessments and interactive quizzes</span>
+                        </li>
+                        <li class="flex items-start interactive-item p-4 rounded-2xl glass-card cursor-default">
+                            <div class="h-10 w-10 rounded-full bg-brand-purple/10 flex items-center justify-center mr-4 flex-shrink-0 text-brand-purple border border-brand-purple/20">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <span class="text-gray-800 text-lg font-semibold pt-1">Adapt to the continuously evolving digital ecosystem</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="trainer" class="py-24 relative overflow-hidden bg-white/40 border-t border-gray-200/50">
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-pink/5 rounded-full blur-[100px] pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 fade-in-section">
+                <h2 class="text-4xl md:text-5xl font-display font-black text-gray-900">Meet Our <span class="text-gradient">Leadership</span></h2>
+                <div class="h-1.5 w-24 bg-gradient-to-r from-brand-purple to-brand-blue mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <div class="max-w-5xl mx-auto glass-card rounded-[2.5rem] p-8 md:p-14 shadow-2xl fade-in-section relative overflow-hidden group">
+                <div class="absolute -right-20 -top-20 w-80 h-80 bg-brand-blue/10 rounded-full blur-3xl group-hover:bg-brand-pink/10 transition-colors duration-700 pointer-events-none"></div>
+
+                <div class="flex flex-col md:flex-row gap-12 lg:gap-16 items-center relative z-10">
+                    <div class="w-full md:w-2/5 flex-shrink-0">
+                        <div class="relative w-72 h-72 mx-auto md:w-full md:h-[450px] interactive-item">
+                            <div class="absolute inset-0 bg-gradient-to-tr from-brand-purple to-brand-blue rounded-3xl transform -rotate-3 scale-105 opacity-20 blur-sm group-hover:rotate-2 transition-transform duration-500"></div>
+                            <img src="https://i.ibb.co/TxDRjcVL/Chat-GPT-Image-May-17-2026-09-11-10-AM.png" alt="Hrishikesh M" class="relative w-full h-full object-cover rounded-3xl border-4 border-white shadow-xl">
+                        </div>
+                    </div>
+                    <div class="w-full md:w-3/5">
+                        <h3 class="text-4xl md:text-5xl font-display font-black mb-4 text-gray-900 tracking-tight">Hrishikesh M</h3>
+                        
+                        <!-- Highlighted Designations -->
+                        <div class="flex flex-col gap-3 mb-6">
+                            <div class="inline-block px-6 py-2.5 rounded-xl bg-gradient-to-r from-brand-purple to-brand-pink text-white font-black text-lg shadow-[0_5px_15px_rgba(138,43,226,0.3)] w-max max-w-full">
+                                <i class="fas fa-crown mr-2 text-yellow-300"></i> Founder & Lead Trainer, Skill Aura
+                            </div>
+                            <div class="inline-block px-5 py-2 rounded-lg bg-gray-100 border border-gray-200 text-brand-purple font-bold shadow-sm w-max max-w-full text-sm sm:text-base">
+                                <i class="fas fa-chalkboard-user mr-2"></i> PGT Physics | AI & ICT Integrated Teaching Practitioner
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-700 text-lg mb-6 leading-relaxed">
+                            With over <span class="font-bold text-gray-900 bg-brand-pink/10 px-2 py-0.5 rounded">7+ years of classroom experience</span> teaching grades 8 to 12, Hrishikesh is a committed educator who actively incorporates AI and digital tools into his daily practices. Driven by a passion for innovation, he founded the <strong>Skill Aura</strong> initiative.
+                        </p>
+                        
+                        <!-- Highlighted International Recognitions -->
+                        <div class="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-2xl p-6 border border-yellow-200 mb-8 interactive-item shadow-sm">
+                            <div class="flex items-start gap-4">
+                                <div class="bg-yellow-100 p-3 rounded-full flex-shrink-0 text-yellow-600 border border-yellow-300">
+                                    <i class="fas fa-globe-americas text-3xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-gray-900 font-black text-xl mb-3 uppercase tracking-wide">International Recognitions</h4>
+                                    <ul class="text-gray-700 leading-snug space-y-3 font-medium">
+                                        <li class="flex items-start">
+                                            <i class="fas fa-medal text-yellow-500 mt-1 mr-2"></i>
+                                            <span>Secured <strong class="text-gray-900 bg-yellow-200/50 px-1 rounded">Second Rank</strong> in the International Digital Teachers Olympiad 2025.</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-star text-yellow-500 mt-1 mr-2"></i>
+                                            <span>Selected in the <strong class="text-gray-900 bg-yellow-200/50 px-1 rounded">Top 20</strong> in the International AI for Innovative Teaching Olympiad 2026 (by UpEducators).</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Professional AI Certifications -->
+                        <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 border border-blue-200 mb-8 interactive-item shadow-sm">
+                            <div class="flex items-start gap-4">
+                                <div class="bg-blue-100 p-3 rounded-full flex-shrink-0 text-blue-600 border border-blue-300">
+                                    <i class="fas fa-certificate text-3xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-gray-900 font-black text-xl mb-3 uppercase tracking-wide">Professional AI Certifications</h4>
+                                    <ul class="text-gray-700 leading-snug space-y-3 font-medium">
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-blue-500 mt-1 mr-2 flex-shrink-0"></i>
+                                            <span><strong class="text-gray-900">Advanced AI Educator (NASSCOM Certified)</strong> - Achieved Gold Level (94%), approved by Govt. of India (MeitY).</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-blue-500 mt-1 mr-2 flex-shrink-0"></i>
+                                            <span><strong class="text-gray-900">Generative AI Certification</strong> - Completed intensive 2-month program.</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="fas fa-check-circle text-blue-500 mt-1 mr-2 flex-shrink-0"></i>
+                                            <span><strong class="text-gray-900">Advanced AI for Educators</strong> - Completed 2-month specialization via upEducators.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-4">
+                            <span class="px-5 py-2.5 rounded-xl bg-white border border-gray-200 text-sm font-bold text-gray-700 shadow-sm interactive-item cursor-default hover:border-brand-purple hover:text-brand-purple"><i class="fas fa-hands-helping mr-2"></i> Hands-on Trainer</span>
+                            <span class="px-5 py-2.5 rounded-xl bg-white border border-gray-200 text-sm font-bold text-gray-700 shadow-sm interactive-item cursor-default hover:border-brand-pink hover:text-brand-pink"><i class="fas fa-microchip mr-2"></i> AI Enthusiast</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-5xl mx-auto glass-card rounded-[2.5rem] p-8 md:p-14 shadow-2xl fade-in-section relative overflow-hidden group mt-12">
+                <div class="absolute -left-20 -bottom-20 w-80 h-80 bg-brand-pink/10 rounded-full blur-3xl group-hover:bg-brand-blue/10 transition-colors duration-700 pointer-events-none"></div>
+
+                <div class="flex flex-col md:flex-row-reverse gap-12 lg:gap-16 items-center relative z-10">
+                    <div class="w-full md:w-2/5 flex-shrink-0">
+                        <div class="relative w-72 h-72 mx-auto md:w-full md:h-[450px] interactive-item">
+                            <div class="absolute inset-0 bg-gradient-to-tr from-brand-blue to-brand-purple rounded-3xl transform rotate-3 scale-105 opacity-20 blur-sm group-hover:-rotate-2 transition-transform duration-500"></div>
+                            <img src="https://i.ibb.co/KxrxXVW1/Devaki-CTO.jpg" alt="Devaki V.K" class="relative w-full h-full object-cover object-top rounded-3xl border-4 border-white shadow-xl">
+                        </div>
+                    </div>
+                    <div class="w-full md:w-3/5">
+                        <h3 class="text-4xl md:text-5xl font-display font-black mb-4 text-gray-900 tracking-tight">Devaki V.K</h3>
+                        
+                        <!-- Highlighted Designations -->
+                        <div class="flex flex-col gap-3 mb-6">
+                            <div class="inline-block px-6 py-2.5 rounded-xl bg-gray-900 text-white font-black text-lg shadow-[0_5px_15px_rgba(0,0,0,0.2)] w-max max-w-full">
+                                <i class="fas fa-code-branch mr-2 text-brand-blue"></i> CTO @ SkillAura
+                            </div>
+                            <div class="inline-block px-5 py-2 rounded-lg bg-gray-100 border border-gray-200 text-brand-purple font-bold shadow-sm w-max max-w-full text-sm sm:text-base">
+                                <i class="fas fa-laptop-code mr-2"></i> Web & App Engineer
+                            </div>
+                        </div>
+                        
+                        <p class="text-gray-700 text-lg mb-6 leading-relaxed font-medium">
+                            Devaki V K is a specialized software developer and the Chief Technical Officer at SkillAura. Operating at the intersection of application architecture and production cloud hosting, she executes full-cycle digital solutions across Netlify and GoDaddy ecosystems.
+                        </p>
+
+                        <div class="flex flex-wrap gap-4 mt-4">
+                            <span class="px-5 py-2.5 rounded-xl bg-white border border-gray-200 text-sm font-bold text-gray-700 shadow-sm interactive-item cursor-default hover:border-brand-blue hover:text-brand-blue"><i class="fas fa-cloud mr-2"></i> Cloud Hosting</span>
+                            <span class="px-5 py-2.5 rounded-xl bg-white border border-gray-200 text-sm font-bold text-gray-700 shadow-sm interactive-item cursor-default hover:border-brand-pink hover:text-brand-pink"><i class="fas fa-layer-group mr-2"></i> App Architecture</span>
+                            <span class="px-5 py-2.5 rounded-xl bg-white border border-gray-200 text-sm font-bold text-gray-700 shadow-sm interactive-item cursor-default hover:border-brand-purple hover:text-brand-purple"><i class="fas fa-code mr-2"></i> Full-Cycle Solutions</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="programs" class="py-24 bg-pattern relative border-t border-gray-200/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 fade-in-section">
+                <h2 class="text-4xl md:text-5xl font-display font-black text-gray-900">Programs & <span class="text-gradient">Core Skills</span></h2>
+                <p class="mt-4 text-gray-600 text-lg max-w-2xl mx-auto font-medium">Mastering tools that turn traditional classrooms into dynamic, AI-enabled learning spaces.</p>
+            </div>
+
+            <!-- The LLM Highlight Showcase -->
+            <div class="mb-12 glass-card rounded-[2rem] p-1 fade-in-section interactive-item border-none shadow-[0_15px_40px_rgba(138,43,226,0.15)] bg-gradient-to-r from-brand-purple/20 via-brand-pink/20 to-brand-blue/20">
+                <div class="bg-white rounded-[1.8rem] p-8 md:p-12 flex flex-col md:flex-row items-center gap-10">
+                    <div class="md:w-1/3 flex-shrink-0 text-center">
+                        <div class="inline-flex items-center justify-center w-28 h-28 rounded-full bg-gradient-to-br from-brand-purple to-brand-blue mb-6 shadow-xl relative">
+                            <div class="absolute inset-0 rounded-full animate-ping opacity-20 bg-brand-purple"></div>
+                            <i class="fas fa-network-wired text-5xl text-white relative z-10"></i>
+                        </div>
+                        <h3 class="text-3xl font-display font-black text-gray-900">The Power of <br><span class="text-gradient">LLMs</span></h3>
+                    </div>
+                    <div class="md:w-2/3">
+                        <h4 class="text-2xl font-bold text-gray-900 mb-4">Mastering Large Language Models</h4>
+                        <p class="text-gray-700 text-lg leading-relaxed mb-6 font-medium">
+                            A core highlight of our training is deep-diving into powerful LLMs like <strong class="text-brand-purple">ChatGPT</strong>, <strong class="text-orange-500">Claude AI</strong>, <strong class="text-brand-blue">Gemini</strong>, and <strong class="text-cyan-600">DeepSeek</strong>. 
+                            We teach you <em>how to engineer prompts</em> to generate precise lesson plans, creative teaching ideas, automated grading rubrics, and personalized student feedback in seconds.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="text-sm font-bold bg-brand-purple/10 text-brand-purple px-4 py-1.5 rounded-lg border border-brand-purple/20"><i class="fas fa-bolt mr-2"></i> Efficiency</span>
+                            <span class="text-sm font-bold bg-brand-pink/10 text-brand-pink px-4 py-1.5 rounded-lg border border-brand-pink/20"><i class="fas fa-bullseye mr-2"></i> Precision</span>
+                            <span class="text-sm font-bold bg-brand-blue/10 text-brand-blue px-4 py-1.5 rounded-lg border border-brand-blue/20"><i class="fas fa-lightbulb mr-2"></i> Creativity</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid of other skills (Updated with requested modules) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass-card p-8 rounded-2xl interactive-item group border-t-4 border-t-brand-purple fade-in-section bg-white/80">
+                    <div class="h-16 w-16 bg-brand-purple/10 rounded-2xl flex items-center justify-center text-brand-purple text-3xl mb-6 group-hover:bg-brand-purple group-hover:text-white transition-all duration-300 shadow-sm">
+                        <i class="fas fa-pen-nib"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">Prompt Engineering</h3>
+                    <p class="text-gray-600 leading-relaxed font-medium">Learn to communicate effectively with AI to extract exactly what you need for your specific curriculum.</p>
+                </div>
+                
+                <!-- Card 2 (Updated: Interactive Materials) -->
+                <div class="glass-card p-8 rounded-2xl interactive-item group border-t-4 border-t-brand-pink fade-in-section bg-white/80" style="transition-delay: 100ms;">
+                    <div class="h-16 w-16 bg-brand-pink/10 rounded-2xl flex items-center justify-center text-brand-pink text-3xl mb-6 group-hover:bg-brand-pink group-hover:text-white transition-all duration-300 shadow-sm">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">Interactive Teaching Materials</h3>
+                    <p class="text-gray-600 leading-relaxed font-medium">Design engaging <strong>Interactive eBooks</strong>, <strong>Simulations</strong>, and gamified digital assessments using specialized EdTech AI.</p>
+                </div>
+
+                <!-- Card 3 (Updated: Lesson & Curriculum) -->
+                <div class="glass-card p-8 rounded-2xl interactive-item group border-t-4 border-t-brand-blue fade-in-section bg-white/80" style="transition-delay: 200ms;">
+                    <div class="h-16 w-16 bg-brand-blue/10 rounded-2xl flex items-center justify-center text-brand-blue text-3xl mb-6 group-hover:bg-brand-blue group-hover:text-white transition-all duration-300 shadow-sm">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">Curriculum & Question Papers</h3>
+                    <p class="text-gray-600 leading-relaxed font-medium">Automate comprehensive lesson planning, structured curriculum design, and rapid standardized <strong>Question Paper setting</strong>.</p>
+                </div>
+
+                <!-- Card 4 (Updated: Video Creation) -->
+                <div class="glass-card p-8 rounded-2xl interactive-item group border-t-4 border-t-orange-500 fade-in-section bg-white/80">
+                    <div class="h-16 w-16 bg-orange-100 rounded-2xl flex items-center justify-center text-orange-600 text-3xl mb-6 group-hover:bg-orange-500 group-hover:text-white transition-all duration-300 shadow-sm">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">AI Video Creation</h3>
+                    <p class="text-gray-600 leading-relaxed font-medium">Create highly engaging instructional videos utilizing advanced AI video generators, virtual avatars, and smart editing.</p>
+                </div>
+                
+                <!-- Card 5 -->
+                <div class="glass-card p-8 rounded-2xl interactive-item group border-t-4 border-t-indigo-500 fade-in-section bg-white/80" style="transition-delay: 100ms;">
+                    <div class="h-16 w-16 bg-indigo-100 rounded-2xl flex items-center justify-center text-indigo-600 text-3xl mb-6 group-hover:bg-indigo-500 group-hover:text-white transition-all duration-300 shadow-sm">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">NotebookLM & Extraction</h3>
+                    <p class="text-gray-600 leading-relaxed font-medium">Turn extensive textbook PDFs into highly organized, usable content, study guides, and Q&A formats instantly.</p>
+                </div>
+                
+                <!-- Card 6 -->
+                <div class="glass-card p-8 rounded-2xl interactive-item group border-t-4 border-t-green-500 fade-in-section bg-white/80" style="transition-delay: 200ms;">
+                    <div class="h-16 w-16 bg-green-100 rounded-2xl flex items-center justify-center text-green-600 text-3xl mb-6 group-hover:bg-green-500 group-hover:text-white transition-all duration-300 shadow-sm">
+                        <i class="fas fa-images"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-900">Visual Content Creation</h3>
+                    <p class="text-gray-600 leading-relaxed font-medium">Utilize Canva AI and other image generators to create visually stunning presentations that captivate students.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="py-24 relative bg-white/60 border-t border-gray-200/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 fade-in-section">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-display font-black text-gray-900">Session <span class="text-gradient">Gallery</span></h2>
+                    <p class="mt-4 text-gray-600 font-medium text-lg">Glimpses of our successful online and offline training sessions.</p>
+                </div>
+                <div class="mt-6 md:mt-0 interactive-item">
+                    <span class="inline-flex items-center px-6 py-3 rounded-xl bg-gradient-to-r from-brand-purple/10 to-brand-blue/10 text-brand-purple font-black border border-brand-purple/20 shadow-sm">
+                        <i class="fas fa-certificate text-xl mr-3 text-brand-pink"></i> E-Certificates Provided
+                    </span>
+                </div>
+            </div>
+
+            <!-- Expanded Gallery Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Poster Placeholders -->
+                <div class="group relative overflow-hidden rounded-2xl glass-card aspect-[3/4] fade-in-section interactive-item border-gray-200 bg-white">
+                    <img src="https://i.ibb.co/nMTNZH6s/1.jpg" alt="Poster 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+                <div class="group relative overflow-hidden rounded-2xl glass-card aspect-[3/4] fade-in-section interactive-item border-gray-200 bg-white" style="transition-delay: 100ms;">
+                    <img src="https://i.ibb.co/zW0VQMv1/Session-2-Ad-2.jpg" alt="Poster 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+                <div class="group relative overflow-hidden rounded-2xl glass-card aspect-[3/4] fade-in-section interactive-item border-gray-200 bg-white" style="transition-delay: 200ms;">
+                    <img src="https://i.ibb.co/LhkvKdbt/Skill-Aura-Session-4-poster.jpg" alt="Poster 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+                <div class="group relative overflow-hidden rounded-2xl glass-card aspect-[3/4] fade-in-section interactive-item border-gray-200 bg-white" style="transition-delay: 300ms;">
+                    <img src="https://i.ibb.co/qMLcX2nT/Whats-App-Image-2026-07-23-at-8-52-47-AM.jpg" alt="Poster 4" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+                
+                <!-- 16:9 Landscape Images -->
+                <div class="group relative overflow-hidden rounded-2xl glass-card aspect-video sm:col-span-2 fade-in-section interactive-item border-gray-200 bg-white">
+                    <img src="https://i.ibb.co/4RF2d1rd/Chat-GPT-Image-Aug-5-2026-12-04-30-AM.png" alt="Training Session Snapshot 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+                <div class="group relative overflow-hidden rounded-2xl glass-card aspect-video sm:col-span-2 fade-in-section interactive-item border-gray-200 bg-white" style="transition-delay: 100ms;">
+                    <img src="https://i.ibb.co/jPL1JQWY/Chat-GPT-Image-Aug-5-2026-12-10-38-AM.png" alt="Training Session Snapshot 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+                <div class="group relative overflow-hidden rounded-2xl glass-card aspect-video sm:col-span-2 fade-in-section interactive-item border-gray-200 bg-white" style="transition-delay: 200ms;">
+                    <img src="https://i.ibb.co/9H89QJfX/Chat-GPT-Image-Aug-5-2026-12-22-02-AM.png" alt="Training Session Snapshot 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+                <div class="group relative overflow-hidden rounded-2xl glass-card aspect-video sm:col-span-2 fade-in-section interactive-item border-gray-200 bg-white" style="transition-delay: 300ms;">
+                    <img src="https://i.ibb.co/chw6qYsg/Whats-App-Image-2026-08-04-at-11-13-20-PM.jpg" alt="Training Session Snapshot 4" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="quiz" class="py-24 relative overflow-hidden border-t border-gray-200/50">
+        <div class="absolute inset-0 bg-white/30 backdrop-blur-sm pointer-events-none"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 fade-in-section">
+            <div class="text-center mb-10">
+                <h2 class="text-4xl md:text-5xl font-display font-black mb-4 text-gray-900">Do You Need <span class="text-gradient">AI Training?</span></h2>
+                <p class="text-gray-600 font-medium text-lg">Take this 8-question readiness test to evaluate your digital pedagogy workflow.</p>
+            </div>
+
+            <div id="quiz-container" class="bg-white rounded-[2rem] p-8 md:p-14 shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100 relative overflow-hidden">
+                <!-- Inner glow -->
+                <div class="absolute -top-20 -left-20 w-64 h-64 bg-brand-blue/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <!-- Welcome Screen -->
+                <div id="quiz-start" class="text-center relative z-10">
+                    <div class="inline-block p-6 rounded-full bg-gray-50 border border-gray-100 mb-8 shadow-inner">
+                        <i class="fas fa-microchip text-6xl text-brand-purple"></i>
+                    </div>
+                    <h3 class="text-3xl font-black mb-4 tracking-tight text-gray-900">Educator AI Readiness Evaluation</h3>
+                    <p class="text-gray-600 font-medium mb-10 max-w-lg mx-auto text-lg leading-relaxed">This quick assessment analyzes your current teaching workflow to determine if LLMs and AI tools can save you time and boost student engagement.</p>
+                    <button onclick="startQuiz()" class="btn-primary interactable px-10 py-4 rounded-full text-xl font-bold w-full sm:w-auto">Start the Evaluation</button>
+                </div>
+
+                <!-- Quiz Questions -->
+                <div id="quiz-questions" class="hidden relative z-10">
+                    <div class="flex justify-between items-center mb-10">
+                        <span id="question-tracker" class="text-sm text-brand-purple font-black tracking-[0.2em] uppercase">Question 1 / 8</span>
+                        <div class="w-1/2 bg-gray-200 rounded-full h-3 overflow-hidden shadow-inner">
+                            <div id="progress-bar" class="bg-gradient-to-r from-brand-purple via-brand-pink to-brand-blue h-full rounded-full transition-all duration-500" style="width: 12.5%"></div>
+                        </div>
+                    </div>
+                    
+                    <h3 id="question-text" class="text-2xl md:text-3xl font-bold mb-10 text-gray-900 min-h-[90px] leading-tight">Question text goes here?</h3>
+                    
+                    <div id="options-container" class="space-y-4">
+                        <!-- Options injected by JS -->
+                    </div>
+                </div>
+
+                <!-- Quiz Result -->
+                <div id="quiz-result" class="hidden text-center relative z-10">
+                    <div id="result-icon" class="text-7xl mb-8 animate-bounce"></div>
+                    <h3 id="result-title" class="text-4xl font-display font-black mb-4 text-gradient tracking-tight">Result Title</h3>
+                    <p id="result-desc" class="text-gray-700 font-medium text-xl mb-10 max-w-2xl mx-auto leading-relaxed">Result description goes here.</p>
+                    
+                    <div class="p-6 bg-gray-50 rounded-2xl border border-gray-200 inline-block text-left mb-10 w-full md:w-4/5 shadow-sm">
+                        <p class="text-sm text-brand-purple font-black mb-2 uppercase tracking-wider"><i class="fas fa-location-arrow mr-2"></i> Recommended Action</p>
+                        <p id="result-action" class="font-bold text-gray-900 text-xl">Action goes here</p>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row justify-center gap-6">
+                        <button onclick="resetQuiz()" class="interactive-item px-8 py-4 rounded-full border-2 border-gray-300 text-gray-700 hover:bg-gray-100 font-bold transition-colors">Retake Assessment</button>
+                        <a href="#contact" class="btn-primary interactable px-10 py-4 rounded-full font-bold text-white text-lg">Contact Trainer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 relative overflow-hidden bg-white/40 border-t border-gray-200/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 fade-in-section">
+                <h2 class="text-4xl md:text-5xl font-display font-black mb-4 text-gray-900">Ready to <span class="text-gradient">Teach Smarter?</span></h2>
+                <p class="text-gray-600 font-medium text-lg max-w-2xl mx-auto">
+                    Join the movement towards highly effective teaching in the digital age. Secure your spot in our next batch or invite us for an offline workshop.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch fade-in-section">
+                <!-- Left: Contact Methods -->
+                <div class="space-y-6 flex flex-col justify-center">
+                    <a href="https://wa.me/919496951256" target="_blank" class="interactive-item flex items-center p-5 bg-white rounded-2xl border-l-4 border-l-green-500 shadow-md group hover:bg-green-50">
+                        <div class="h-14 w-14 bg-green-100 rounded-full flex items-center justify-center text-green-600 text-3xl mr-5 flex-shrink-0 group-hover:scale-110 transition-transform">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 font-bold">WhatsApp / Call</p>
+                            <p class="text-xl font-black text-gray-900 group-hover:text-green-600 transition-colors">+91 94969 51256</p>
+                        </div>
+                    </a>
+                    
+                    <div class="interactive-item flex items-center p-5 bg-white rounded-2xl border-l-4 border-l-brand-blue shadow-md group hover:bg-blue-50">
+                        <div class="h-14 w-14 bg-blue-100 rounded-full flex items-center justify-center text-brand-blue text-2xl mr-5 flex-shrink-0 group-hover:scale-110 transition-transform">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="overflow-hidden w-full">
+                            <p class="text-sm text-gray-500 font-bold mb-1">Email Queries</p>
+                            <a href="mailto:skillauraforeducators@gmail.com" class="block text-sm md:text-[15px] font-black text-gray-900 hover:text-brand-purple transition-colors truncate mb-1">skillauraforeducators@gmail.com <span class="text-[10px] text-brand-purple ml-1 font-bold bg-brand-purple/10 px-1.5 py-0.5 rounded align-middle">Official</span></a>
+                            <a href="mailto:mmhrishi93@gmail.com" class="block text-sm md:text-[15px] font-bold text-gray-600 hover:text-brand-blue transition-colors truncate">mmhrishi93@gmail.com <span class="text-[10px] text-brand-blue ml-1 font-bold bg-brand-blue/10 px-1.5 py-0.5 rounded align-middle">Trainer</span></a>
+                        </div>
+                    </div>
+                    
+                    <div class="interactive-item flex items-center p-5 bg-white rounded-2xl border-l-4 border-l-brand-pink shadow-md cursor-default hover:bg-pink-50">
+                        <div class="h-14 w-14 bg-pink-100 rounded-full flex items-center justify-center text-brand-pink text-2xl mr-5 flex-shrink-0">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500 font-bold">Location / Mode</p>
+                            <p class="text-lg font-black text-gray-900">Kerala (Offline) & Global (Online)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Middle: Trainer Profile Card -->
+                <div class="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-xl flex flex-col items-center justify-center text-center relative overflow-hidden interactive-item group hover:border-brand-purple/50">
+                    <div class="absolute inset-0 bg-gradient-to-b from-brand-purple/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    
+                    <div class="relative w-36 h-36 mb-6">
+                        <div class="absolute inset-0 rounded-full bg-gradient-to-r from-brand-pink to-brand-blue animate-spin" style="animation-duration: 4s; filter: blur(10px); opacity: 0.5;"></div>
+                        <img src="https://i.ibb.co/TxDRjcVL/Chat-GPT-Image-May-17-2026-09-11-10-AM.png" alt="Hrishikesh M" class="relative w-full h-full object-cover rounded-full border-4 border-white shadow-lg">
+                    </div>
+                    
+                    <h3 class="text-2xl font-black text-gray-900 mb-2">Hrishikesh M</h3>
+                    <p class="text-brand-purple font-bold text-sm mb-4 px-4 py-1.5 bg-brand-purple/10 rounded-full inline-block border border-brand-purple/20">Founder & Lead Trainer</p>
+                    <p class="text-gray-600 font-medium text-sm leading-relaxed mb-6">Passionate about integrating AI & ICT to revolutionize classroom environments globally.</p>
+                    
+                    <div class="flex gap-4">
+                        <a href="https://wa.me/919496951256" target="_blank" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-green-500 hover:text-white transition-colors shadow-sm"><i class="fab fa-whatsapp text-lg"></i></a>
+                        <a href="mailto:mmhrishi93@gmail.com" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-brand-blue hover:text-white transition-colors shadow-sm"><i class="fas fa-envelope text-lg"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Right: QR Code Block -->
+                <div class="flex flex-col items-center justify-center p-8 bg-white rounded-[2rem] border border-gray-100 text-center relative overflow-hidden interactive-item group shadow-xl">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-green-500 opacity-[0.05] blur-[40px] group-hover:opacity-20 transition-opacity duration-500"></div>
+                    
+                    <h3 class="text-2xl font-black mb-2 text-gray-900">Scan to Connect</h3>
+                    <p class="text-gray-500 font-medium mb-8 text-sm">Use WhatsApp camera to reach out instantly</p>
+                    
+                    <div class="bg-white p-3 rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] mb-8 transform group-hover:scale-105 transition-transform duration-500 border-2 border-gray-100">
+                        <img src="https://i.ibb.co/6G9LVS0/IMG-20261003-231211-jpg.jpg" alt="WhatsApp QR Code" class="w-44 h-44 object-contain">
+                    </div>
+                    
+                    <a href="https://wa.me/919496951256" target="_blank" class="w-full py-4 bg-[#25D366] hover:bg-[#128C7E] transition-colors rounded-xl font-bold text-white flex items-center justify-center gap-3 text-lg shadow-lg">
+                        <i class="fab fa-whatsapp text-2xl"></i> Chat on WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 py-12 text-center relative z-10 border-t-4 border-brand-purple">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="mb-6 flex justify-center">
+                <img src="https://i.ibb.co/xqxRn2c1/skill-aura-header.jpg" alt="Skill Aura" class="h-12 object-contain rounded opacity-80 hover:opacity-100 transition-opacity interactive-item cursor-pointer bg-white/90 p-1">
+            </div>
+            <p class="text-gray-400 font-medium text-sm leading-relaxed">
+                &copy; <span id="year"></span> Skill Aura - Empowering Educators with AI & ICT. All rights reserved.<br>
+                Founded by Hrishikesh M. | <a href="mailto:skillauraforeducators@gmail.com" class="text-brand-blue hover:text-white transition-colors">skillauraforeducators@gmail.com</a> | <a href="mailto:mmhrishi93@gmail.com" class="text-brand-blue hover:text-white transition-colors">mmhrishi93@gmail.com</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Set Current Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Custom Cursor Logic
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.getElementById('cursor-outline');
+        
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+            
+            if(cursorDot) {
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+            }
+            
+            if(cursorOutline) {
+                cursorOutline.animate({
+                    left: `${posX}px`,
+                    top: `${posY}px`
+                }, { duration: 300, fill: "forwards", easing: "ease-out" });
+            }
+        });
+
+        // Hover effect on interactable elements
+        const interactables = document.querySelectorAll('a, button, .interactive-item, .interactable');
+        interactables.forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+        });
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+        mobileLinks.forEach(link => link.addEventListener('click', () => menu.classList.add('hidden')));
+
+        // Navbar Scroll Effect (Updated for Light Theme)
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-lg', 'bg-white/80', 'backdrop-blur-xl');
+                nav.classList.remove('bg-white/40', 'backdrop-blur-md');
+            } else {
+                nav.classList.remove('shadow-lg', 'bg-white/80', 'backdrop-blur-xl');
+                nav.classList.add('bg-white/40', 'backdrop-blur-md');
+            }
+        });
+
+        // Intersection Observer
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
+
+        // Quiz Logic (8 Questions)
+        const questions = [
+            { question: "How often do you use LLMs (like ChatGPT, Claude, or Gemini) for lesson planning?", options: [{ text: "Never used them", score: 0 }, { text: "Occasionally, but results are mixed", score: 1 }, { text: "Regularly and confidently use specific prompts", score: 2 }] },
+            { question: "Are you comfortable generating interactive digital assessments using AI?", options: [{ text: "No, I create them completely manually", score: 0 }, { text: "I try, but it takes too much time to format", score: 1 }, { text: "Yes, I automate quizzes seamlessly", score: 2 }] },
+            { question: "Have you ever used 'Prompt Engineering' to tailor content for specific student learning levels?", options: [{ text: "What is Prompt Engineering?", score: 0 }, { text: "I write basic prompts, nothing advanced", score: 1 }, { text: "Yes, I use context, constraints, and roles in prompts", score: 2 }] },
+            { question: "Do you use AI (like Canva AI) to create visual content for your presentations?", options: [{ text: "No, I search Google Images", score: 0 }, { text: "Sometimes, for basic layouts", score: 1 }, { text: "Frequently, to generate custom educational graphics", score: 2 }] },
+            { question: "How confident are you in adapting to rapidly changing digital education tools?", options: [{ text: "Overwhelmed / Resist change", score: 0 }, { text: "Open to it, but learning is slow", score: 1 }, { text: "Very confident / Early adopter", score: 2 }] },
+            { question: "Have you utilized tools like NotebookLM to extract/summarize extensive textbook PDFs?", options: [{ text: "No, I didn't know that was possible", score: 0 }, { text: "I've heard of it, haven't tried it yet", score: 1 }, { text: "Yes, it creates my study guides instantly", score: 2 }] },
+            { question: "Do you feel traditional teaching methods alone are sufficient for today's digital-native students?", options: [{ text: "Yes, traditional works best", score: 0 }, { text: "Maybe, but some tech helps", score: 1 }, { text: "No, integrating tech/AI is absolutely necessary", score: 2 }] },
+            { question: "Are you currently using AI to generate question papers aligned with specific curriculum standards (e.g., CBSE/State)?", options: [{ text: "No, I rely solely on textbook questions or manual creation.", score: 0 }, { text: "I tried, but the AI questions don't match the required syllabus standard.", score: 1 }, { text: "Yes, I use AI to rapidly generate standard-aligned question papers.", score: 2 }] }
+        ];
+
+        let currentQuestionIndex = 0;
+        let totalScore = 0;
+
+        const startScreen = document.getElementById('quiz-start');
+        const questionScreen = document.getElementById('quiz-questions');
+        const resultScreen = document.getElementById('quiz-result');
+        const questionText = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const tracker = document.getElementById('question-tracker');
+        const progressBar = document.getElementById('progress-bar');
+
+        function startQuiz() {
+            startScreen.classList.add('hidden');
+            questionScreen.classList.remove('hidden');
+            currentQuestionIndex = 0;
+            totalScore = 0;
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const q = questions[currentQuestionIndex];
+            tracker.textContent = `Question ${currentQuestionIndex + 1} / ${questions.length}`;
+            progressBar.style.width = `${((currentQuestionIndex + 1) / questions.length) * 100}%`;
+            
+            questionText.style.opacity = 0;
+            setTimeout(() => {
+                questionText.textContent = q.question;
+                questionText.style.transition = "opacity 0.4s";
+                questionText.style.opacity = 1;
+            }, 100);
+            
+            optionsContainer.innerHTML = '';
+            
+            q.options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = "interactive-item w-full text-left p-5 rounded-2xl bg-white border border-gray-200 hover:border-brand-purple hover:bg-brand-purple/5 transition-all text-gray-800 font-bold focus:outline-none focus:ring-2 focus:ring-brand-purple group mt-4 transform translate-y-4 opacity-0 shadow-sm";
+                btn.innerHTML = `<div class="flex items-center"><span class="w-10 h-10 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center mr-5 font-black text-lg text-brand-purple group-hover:bg-brand-purple group-hover:text-white transition-colors">${String.fromCharCode(65 + index)}</span> <span class="text-lg">${opt.text}</span></div>`;
+                btn.onclick = () => selectOption(opt.score);
+                optionsContainer.appendChild(btn);
+                
+                setTimeout(() => {
+                    btn.style.transition = "all 0.4s ease";
+                    btn.style.opacity = 1;
+                    btn.style.transform = "translateY(0)";
+                }, 150 + (index * 100));
+
+                btn.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+                btn.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+            });
+        }
+
+        function selectOption(score) {
+            totalScore += score;
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) loadQuestion();
+            else showResult();
+        }
+
+        function showResult() {
+            questionScreen.classList.add('hidden');
+            resultScreen.classList.remove('hidden');
+            
+            const titleEl = document.getElementById('result-title');
+            const descEl = document.getElementById('result-desc');
+            const actionEl = document.getElementById('result-action');
+            const iconEl = document.getElementById('result-icon');
+            
+            if (totalScore <= 7) {
+                iconEl.innerHTML = '<i class="fas fa-battery-quarter text-brand-pink drop-shadow-md"></i>';
+                titleEl.textContent = "AI Training is Highly Recommended!";
+                descEl.textContent = "You have massive untapped potential! Integrating LLMs and AI tools will save you hours of planning and transform your classroom. Skill Aura's step-by-step foundation course is perfect for you.";
+                actionEl.innerHTML = 'Enroll in the <span class="text-brand-pink">5-Day AI & ICT Foundation Training</span>.';
+            } else if (totalScore <= 12) {
+                iconEl.innerHTML = '<i class="fas fa-battery-half text-brand-purple drop-shadow-md"></i>';
+                titleEl.textContent = "You're on the Right Track!";
+                descEl.textContent = "You have a basic understanding, but you're missing out on advanced time-saving techniques like prompt engineering, ethical AI implementation, and adaptive quizzes.";
+                actionEl.innerHTML = 'Join our specialized modules on <span class="text-brand-purple">Prompt Engineering & Curriculum Planning</span>.';
+            } else {
+                iconEl.innerHTML = '<i class="fas fa-battery-full text-brand-blue drop-shadow-md"></i>';
+                titleEl.textContent = "You are a Digital Innovator!";
+                descEl.textContent = "Great job! You are already utilizing AI effectively. Skill Aura can still help you stay updated with the latest rapid advancements in LLMs (like DeepSeek and NotebookLM deep dives).";
+                actionEl.innerHTML = 'Connect for advanced <span class="text-brand-blue">Masterclasses and Networking</span>.';
+            }
+        }
+
+        function resetQuiz() {
+            resultScreen.classList.add('hidden');
+            startScreen.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
